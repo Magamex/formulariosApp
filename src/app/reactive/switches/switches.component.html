@@ -1,7 +1,7 @@
 <h2>Template: Switches</h2>
 <hr>
 
-<form>
+<form [formGroup]="miFormulario" (ngSubmit)="guardar()">
 
   <div class="row mb-3">
     <label class="col-sm-3 col-form-label">Genero</label>
@@ -9,6 +9,8 @@
       <div class="form-check">
         <input class="form-check-input"
                type="radio"
+               value="F"
+               formControlName="genero"
                >
         <label class="form-check-label" for="flexRadioDefault1">
           Femenino
@@ -17,6 +19,8 @@
       <div class="form-check">
         <input class="form-check-input"
                type="radio"
+               value="M"
+               formControlName="genero"
                >
         <label class="form-check-label" for="flexRadioDefault2">
           Masculino
@@ -31,6 +35,7 @@
       <div class="form-check form-switch mt-2">
         <input class="form-check-input"
                type="checkbox"
+               formControlName="notificaciones"
                >
         <label class="form-check-label" for="switchNotificacion">Quiero recibir notificaciones</label>
       </div>
@@ -43,6 +48,7 @@
       <div class="form-check">
         <input class="form-check-input"
                type="checkbox"
+               formControlName="condiciones"
                >
         <label class="form-check-label" for="checkboxTermino">
           Aceptar Terminos y condiciones
@@ -54,6 +60,8 @@
   <div class="row">
     <div class="col">
       <button class="btn btn-primary float-end"
+              type="submit"
+              [disabled]="!miFormulario.valid"
              >
               Guardar</button>
     </div>
@@ -61,7 +69,7 @@
 
 </form>
 
-<!-- <h5>Valor del Formulario</h5>
+<h5>Valor del Formulario</h5>
 <pre>{{miFormulario.value | json}}</pre>
 <br>
 
@@ -74,6 +82,6 @@
 <br>
 
 <h5>Condiciones</h5>
-<pre>{{terminosYCondiciones | json}}</pre>
-<pre>{{miFormulario.controls['terminos']?.errors | json}}</pre>
-<br> -->
+<!-- <pre>{{terminosYCondiciones | json}}</pre> -->
+<!-- <pre>{{miFormulario.controls['terminos']?.errors | json}}</pre> -->
+<br>
